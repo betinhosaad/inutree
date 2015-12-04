@@ -15,7 +15,6 @@ class MealsController < ApplicationController
   
   def create
     @meal = Meal.new(meal_params)
-
     if @meal.save
       flash[:success] = "Refeição criada com sucesso!"
       redirect_to meals_path
@@ -39,7 +38,7 @@ class MealsController < ApplicationController
   private
   
     def meal_params
-      params.require(:meal).permit(:name, :picture, :tcarb, :tprot, :tfat, :tkcal, ingredients_attributes: [:name, :unit, :quantity, :carb, :prot, :fat])
+      params.require(:meal).permit(:name, :picture, :tcarb, :tprot, :tfat, :tkcal, ingredients_attributes: [:name, :unit, :ing_quantity, :carb, :prot, :fat])
     end
     
     def set_meal

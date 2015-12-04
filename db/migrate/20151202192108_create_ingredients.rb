@@ -7,7 +7,6 @@ class CreateIngredients < ActiveRecord::Migration
       t.decimal :carb, precision: 8, scale: 2
       t.decimal :prot, precision: 8, scale: 2
       t.decimal :fat, precision: 8, scale: 2
-      t.float :quantity, default: 0.0
       t.timestamps
     end
   end

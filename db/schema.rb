@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20151203191649) do
     t.decimal  "carb",       precision: 8, scale: 2
     t.decimal  "prot",       precision: 8, scale: 2
     t.decimal  "fat",        precision: 8, scale: 2
-    t.float    "quantity",                           default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,6 +27,7 @@ ActiveRecord::Schema.define(version: 20151203191649) do
   create_table "meal_ingredients", force: :cascade do |t|
     t.integer "ingredient_id"
     t.integer "meal_id"
+    t.float   "quantity",      default: 0.0
   end
 
   create_table "meals", force: :cascade do |t|

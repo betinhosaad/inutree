@@ -7,6 +7,13 @@ class Ingredient < ActiveRecord::Base
   validates :unit, presence: true
   validates :carb, :prot, :fat, numericality: true, length: { minimum: 1, maximum: 5 }
   
- 
+  def ing_quantity
+    meal_ingredients(:quantity)
+  end
+  
+  def ing_quantity=(quantity)
+    self.meal_ingredients = MealIngredient.find_or_create_by(quantity: quantity)
+  end
+    
   
 end
