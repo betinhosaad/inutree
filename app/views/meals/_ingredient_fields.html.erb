@@ -1,0 +1,57 @@
+<%= render 'shared/errors', obj: @meal %>
+<div class = "nested-fields">
+  <table class= "table">
+      <thead>
+        <tr>
+          <td>
+            <%= f.label "Nome" %>
+          </td>
+          <td>
+            <%= f.label "Unidade" %>
+          </td>
+          <td>
+            <%= f.label "Carbo" %>
+          </td>
+          <td>
+            <%= f.label "Prot" %>
+          </td>
+          <td>
+            <%= f.label "Gordura" %>
+          </td>
+          <td>
+            <%= f.label "Quantidade" %>
+          </td>
+          <td>
+            <%= f.label "kcal" %>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row" class="col-md-4">
+            <%= f.text_field :name, required: true, class: "form-control" %>
+          </td>
+          <td class="col-md-2">
+            <%= f.text_field :unit, required: true, class: "form-control" %>
+          </td>
+          <td class="col-md-1">
+            <%= f.text_field :carb, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control" %>
+          </td>
+          <td class="col-md-1">
+            <%= f.text_field :prot, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control" %>
+          </td>
+          <td class="col-md-1">
+            <%= f.text_field :fat, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control" %>
+          </td>
+          <td class="col-md-1">
+            <%= f.text_field :quantity, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control" %>
+          </td>          
+          <td class="col-md-1">
+          </td>
+          <td class="col-md-1">
+            <%= link_to_remove_association "remove item", f, :class => "btn btn-danger" %>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>

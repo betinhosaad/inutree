@@ -1,0 +1,62 @@
+<div class = "row">
+  <div class= "col-md-10 col-md-offset-1 well">
+    <table class= "table">
+      <thead>
+        <tr>
+          <th>
+            Nome
+          </th>
+          <th>
+            Unidade
+          </th>
+          <th>
+            Carboidratos
+          </th>
+          <th>
+            Proteínas
+          </th>
+          <th>
+            Gorduras
+          </th>
+          <th>
+            kcal
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @ingredients.each do |ingredient| %>
+          <tr>
+            <th scope="row">
+              <%= best_in_place ingredient, :name %>
+            </th>
+            <th>
+              <%= best_in_place ingredient, :unit %>
+            </th>
+            <th>
+              <%= best_in_place ingredient, :carb %> g
+            </th>
+            <th>
+              <%= best_in_place ingredient, :prot %> g
+            </th>
+            <th>
+              <%= best_in_place ingredient, :fat %> g
+            </th>
+            <th>
+              <%= ingredient.kcal %>
+            </th>
+            <th>
+              <%= link_to 'Excluir', ingredient, method: :delete, data: { confirm: 'Tem certeza?' } %>
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfooter>
+          <tr>
+            <th class="pull-right">
+              <%= link_to "Novo ingrediente", new_ingredient_path, class: "btn btn-success", data: { no_turbolink: true } %>
+            </th>
+          </tr>
+        </tfooter>
+    </table>
+  </div>
+</div>

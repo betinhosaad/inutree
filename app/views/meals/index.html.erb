@@ -1,0 +1,45 @@
+<div class = "row">
+  <div class= "col-md-10 col-md-offset-1 well">
+    <table class= "table">
+      <thead>
+        <tr>
+          <th>
+            Nome
+          </th>
+          <th>
+            Unidade
+          </th>
+          <th>
+            Quantidade
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @meals.each do |meal| %>
+        <% meal.ingredients.each do |ingredient| %>
+          <tr>
+            
+              <th scope="row">
+                <%= ingredient.name %>
+              </th>
+              <th>
+                <%= ingredient.unit %>
+              </th>
+            <th>
+              <%= ingredient.quantity %>
+            </th>
+            
+          </tr>
+           <% end %>
+        <% end %>
+      </tbody>
+      <tfooter>
+        <tr>
+          <th class="pull-right">
+            <%= link_to "Nova Receita", new_meal_path, class: "btn btn-success", data: { no_turbolink: true } %>
+          </th>
+        </tr>
+      </tfooter>
+    </table>
+  </div>
+</div>

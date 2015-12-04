@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>iNutree</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'layouts/navbar' %>
+  <div class="wrapper">
+    <div class="sidebar">
+      <div class="row">
+            <h2 class="text-left">Resumo</h2>
+      <hr />
+      </div>
+    </div>
+    <div class="dashboard">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+    </div>
+  </div>
+  
+    
+  <%= render 'layouts/footer' %>
+</body>
+</html>

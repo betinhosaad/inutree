@@ -1,0 +1,63 @@
+<%= render 'shared/errors', obj: @ingredient %>
+
+<div class = "row">
+  <div class= "col-md-10 col-md-offset-1 well">
+    <table class= "table">
+      <%= form_for @ingredient do |f| %>
+        <thead>
+          <tr>
+            <td>
+              <%= f.label "Nome" %>
+            </td>
+            <td>
+              <%= f.label "Unidade" %>
+            </td>
+            <td>
+              <%= f.label "Carbo" %>
+            </td>
+            <td>
+              <%= f.label "Prot" %>
+            </td>
+            <td>
+              <%= f.label "Gordura" %>
+            </td>
+            <td>
+              <%= f.label "kcal" %>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row" class="col-md-5">
+              <%= f.text_field :name, required: true, class: "form-control" %>
+            </td>
+            <td class="col-md-3">
+              <%= f.text_field :unit, required: true, class: "form-control" %>
+            </td>
+            <td class="col-md-1">
+              <%= f.text_field :carb, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control" %>
+            </td>
+            <td class="col-md-1">
+              <%= f.text_field :prot, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control" %>
+            </td>
+            <td class="col-md-1">
+              <%= f.text_field :fat, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control" %>
+            </td>
+            <td class="col-md-1">
+            </td>
+          </tr>
+        </tbody>
+        <tfooter>
+          <tr>
+            <td class="pull-right">
+              <%= f.submit @ingredient.new_record? ? 'Create Ingredient' : 'Edit Ingredient', class: "btn btn-success" %>
+            </td>
+            <td>
+              <%= link_to "Voltar", ingredients_path, class: "btn btn-warning" %>
+            </td>
+          </tr>
+        </tfooter>
+      <% end %>
+    </table>
+  </div>
+</div>
