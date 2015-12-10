@@ -1,7 +1,7 @@
 class IngredientsController < ApplicationController
   respond_to :html, :json
-  before_action :set_ingredient, only: [:edit, :update, :destroy]
-  autocomplete :ingredient, :name
+  before_action :set_ingredient, only: [:edit, :update, :destroy, :populate_ingredients]
+  autocomplete :ingredient, :name, :extra_data => [:unit, :carb, :prot, :fat]
   
   def index
     @ingredients = Ingredient.all
@@ -38,6 +38,12 @@ class IngredientsController < ApplicationController
       redirect_to ingredients_path
     else
       render 'new'
+    end
+  end
+  
+  def populate_ingredients
+    respond_to do |format|
+      format.js { render 'populate_ingredients', :formats => [:js] }
     end
   end
   

@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: [:edit, :update, :show]
-  autocomplete :ingredients, :name
+
 
   def index
     @meals = Meal.order(updated_at: :desc).paginate(:page => params[:page], :per_page => 4)
@@ -11,6 +11,7 @@ class MealsController < ApplicationController
   
   def new
     @meal = Meal.new
+    
   end
   
   def create
@@ -38,8 +39,9 @@ class MealsController < ApplicationController
   private
   
     def meal_params
-      params.require(:meal).permit(:name, :picture, :tcarb, :tprot, :tfat, :tkcal, ingredients_attributes: [:name, :unit, :ing_quantity, :carb, :prot, :fat])
+      params.require(:meal).permit(:name, :picture, :tcarb, :tprot, :tfat, :tkcal, meal_ingredients_attributes: [:quantity, ingredient_attributes: [:id, :name, :unit, :carb, :prot, :fat, :_destroy, :ingredient_name]])
     end
+
     
     def set_meal
       @meal = Meal.find(params[:id])

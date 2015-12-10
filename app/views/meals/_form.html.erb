@@ -7,15 +7,18 @@
         <%= f.input :name %>
       </div>
       <h3>ingredientes</h3>
-      <div id="ingredients">
-        <%= f.simple_fields_for :ingredients do |ingredient| %>
-          <%= render "ingredient_fields", :f => ingredient %>
-        <% end %>
-      </div>
+      <fieldset id="ingredients">
+        <ol>
+          <%= f.fields_for :meal_ingredients do |meal_ingredient| %>
+            <%= render "meal_ingredient_fields", :f => meal_ingredient  %>
+          <% end %>
+        </ol>
     
+        <div class="form-actions">
+          <div><%= link_to_add_association 'adicionar ingrediente', f, :meal_ingredients, 'data-association-insertion-node' => "#ingredients ol", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|quantity| quantity.build_ingredient; quantity }, :class => "btn btn-default" %></div>
+        </div>
+      </fieldset>
       <div class="form-actions">
-        <div><%= link_to_add_association 'adicionar ingrediente', f, :ingredients, :class => "btn btn-default" %></div>
-        
         <div><%= f.button :submit, class: "btn btn-success" %></div>
       </div>
     <% end %>

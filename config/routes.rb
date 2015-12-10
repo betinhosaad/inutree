@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'diets#index'
-  resources :ingredients 
-  resources :meals do
-  get :autocomplete_ingredients_name, :on => :collection
+  resources :ingredients do     
+    get :autocomplete_ingredient_name, :on => :collection
   end
+  resources :meals
   
 end
