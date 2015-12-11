@@ -39,7 +39,7 @@ class MealsController < ApplicationController
   private
   
     def meal_params
-      params.require(:meal).permit(:name, :picture, :tcarb, :tprot, :tfat, :tkcal, meal_ingredients_attributes: [:quantity, ingredient_attributes: [:id, :name, :unit, :carb, :prot, :fat, :_destroy, :ingredient_name]])
+      params.require(:meal).permit(:name, :picture, :tcarb, :tprot, :tfat, :tkcal, meal_ingredients_attributes: [:quantity, ingredient_attributes: [:id, :name, :unit, :carb, :prot, :fat, :_destroy]])
     end
 
     

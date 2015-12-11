@@ -28,22 +28,22 @@
       <tbody>
         <tr>
           <%= f.fields_for :ingredient do |fi| %>
-            <%= fi.hidden_field :id, :id => "ingredient_id" %>
-          <td scope="row" class="col-md-4">
-            <%= fi.autocomplete_field :name, autocomplete_ingredient_name_ingredients_path, :id_element => '#ingredient_id', class: "form-control" %>
-          </td>
-          <td class="col-md-1">
-            <%= fi.text_field :unit, required: true, id: 'unit_input', class: "form-control unit_input" %>
-          </td>
-          <td class="col-md-1">
-            <%= fi.text_field :carb, required: true, id: 'carb_input', :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control carb_input" %>
-          </td>
-          <td class="col-md-1">
-            <%= fi.text_field :prot, required: true, id: 'prot_input', :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control prot_input" %>
-          </td>
-          <td class="col-md-1">
-            <%= fi.text_field :fat, required: true, id: 'fat_input', :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control fat_input" %>
-          </td>
+            <%= fi.hidden_field :id %>
+            <td scope="row" class="col-md-4">
+              <%= fi.autocomplete_field :name, autocomplete_ingredient_name_ingredients_path, :id_element => '#ingredient_id', class: "form-control" %>
+            </td>
+            <td class="col-md-1">
+              <%= fi.text_field :unit, required: true, class: "form-control unit_input" %>
+            </td>
+            <td class="col-md-1">
+              <%= fi.text_field :carb, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control carb_input" %>
+            </td>
+            <td class="col-md-1">
+              <%= fi.text_field :prot, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control prot_input" %>
+            </td>
+            <td class="col-md-1">
+              <%= fi.text_field :fat, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control fat_input" %>
+            </td>
           <% end %>
           <td class="col-md-1">
             <%= f.number_field :quantity, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control" %>
