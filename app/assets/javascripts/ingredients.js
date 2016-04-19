@@ -31,14 +31,15 @@
         var current = $(this);
         var rx = /meal_meal_ingredients_attributes_(.*)_ingredient_attributes_name/;
         num = rx.exec(current.attr('id'))[1];
-        id = '#meal_meal_ingredients_attributes_'+ num +'_ingredient_attributes_';
+        id = '#meal_meal_ingredients_attributes_'+ num +'_ingredient_';
     });
-    $(id + 'name').bind('railsAutocomplete.select', function(event, data){
-      $( id + 'id' ).val( data.item.id);
-      $( id + 'unit' ).val( data.item.unit).prop('disabled', true);
-      $( id + 'carb' ).val( data.item.carb).prop('disabled', true);
-      $( id + 'prot' ).val( data.item.prot).prop('disabled', true);
-      $( id + 'fat' ).val( data.item.fat).prop('disabled', true);
+    $(id + 'attributes_name').bind('railsAutocomplete.select', function(event, data){
+      $( id + 'attributes_id' ).val( data.item.id);
+      $( id + 'attributes_unit' ).val( data.item.unit).prop('disabled', true);
+      $( id + 'attributes_carb' ).val( data.item.carb).prop('disabled', true);
+      $( id + 'attributes_prot' ).val( data.item.prot).prop('disabled', true);
+      $( id + 'attributes_fat' ).val( data.item.fat).prop('disabled', true);
     });
+
   });
 }); 

@@ -3,8 +3,6 @@ class Ingredient < ActiveRecord::Base
   has_many :meals, through: :meal_ingredients
 
   
-  accepts_nested_attributes_for :meal_ingredients, :reject_if => :all_blank
-  
   before_save { self.name = name.capitalize }
   validates :name, presence: true, length: { minimum: 2, maximum: 25 }, uniqueness: true
   validates :unit, presence: true

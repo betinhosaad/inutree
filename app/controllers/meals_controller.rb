@@ -3,7 +3,7 @@ class MealsController < ApplicationController
 
 
   def index
-    @meals = Meal.order(updated_at: :desc).paginate(:page => params[:page], :per_page => 4)
+    @meals = Meal.all
   end
   
   def show
@@ -11,7 +11,7 @@ class MealsController < ApplicationController
   
   def new
     @meal = Meal.new
-    
+    @ingredient = @meal.ingredients.build
   end
   
   def create
@@ -39,7 +39,7 @@ class MealsController < ApplicationController
   private
   
     def meal_params
-      params.require(:meal).permit(:name, :picture, :tcarb, :tprot, :tfat, :tkcal, meal_ingredients_attributes: [:quantity, ingredient_attributes: [:id, :name, :unit, :carb, :prot, :fat, :_destroy]])
+      params.require(:meal).permit(:name, :picture, meal_ingredients_attributes: [:ingredient_id, :quantity, ingredient_attributes: [ :name, :unit, :carb, :prot, :fat, :_destroy]])
     end
 
     

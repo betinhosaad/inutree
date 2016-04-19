@@ -1,10 +1,11 @@
 <div class = "row">
   <div class= "col-md-10 col-md-offset-1 well">
+    <% @meals.each do |meal| %>
     <table class= "table">
       <thead>
         <tr>
           <th>
-            Nome
+            Ingredientes
           </th>
           <th>
             Unidade
@@ -15,25 +16,23 @@
         </tr>
       </thead>
       <tbody>
-        <% @meals.each do |meal| %>
+        <%= meal.name %>
         <% meal.ingredients.each do |ingredient| %>
           <tr>
-            
-              <th scope="row">
-                <%= ingredient.name %>
-              </th>
-              <th>
-                <%= ingredient.unit %>
-              </th>
             <th>
-              <% ingredient.meal_ingredients.each do |quantity| %>
+              <%= ingredient.name %>
+            </th>
+            <th>
+              <%= ingredient.unit %>
+            </th>
+        <% end %>
+            <th>
+              <% meal.meal_ingredients.each do |quantity| %>
                 <%= quantity.quantity %>
               <% end %>
             </th>
-            
           </tr>
-           <% end %>
-        <% end %>
+    <% end %>
       </tbody>
       <tfooter>
         <tr>

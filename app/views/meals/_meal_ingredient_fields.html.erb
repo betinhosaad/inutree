@@ -27,30 +27,16 @@
       </thead>
       <tbody>
         <tr>
-          <%= f.fields_for :ingredient do |fi| %>
-            <%= fi.hidden_field :id %>
-            <td scope="row" class="col-md-4">
-              <%= fi.autocomplete_field :name, autocomplete_ingredient_name_ingredients_path, :id_element => '#ingredient_id', class: "form-control" %>
-            </td>
-            <td class="col-md-1">
-              <%= fi.text_field :unit, required: true, class: "form-control unit_input" %>
-            </td>
-            <td class="col-md-1">
-              <%= fi.text_field :carb, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control carb_input" %>
-            </td>
-            <td class="col-md-1">
-              <%= fi.text_field :prot, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control prot_input" %>
-            </td>
-            <td class="col-md-1">
-              <%= fi.text_field :fat, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control fat_input" %>
-            </td>
-          <% end %>
+          <td class="col-md-1">
+            <%= f.autocomplete_field :ingredient_name, autocomplete_ingredient_name_ingredients_path, class: "form-control" %>
+          </td>
+          <td class="col-md-1">
+            <%= @ingredient.unit %>
+          </td>
           <td class="col-md-1">
             <%= f.number_field :quantity, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control" %>
-            
           </td>          
-          <td class="col-md-1">
-          </td>
+
           <td class="col-md-1">
             <%= link_to_remove_association "remove item", f, :class => "btn btn-danger" %>
           </td>

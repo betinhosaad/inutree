@@ -1,0 +1,17 @@
+<%= f.fields_for :ingredient do |fi| %>
+  <td scope="row" class="col-md-4">
+    <%= fi.autocomplete_field :name, autocomplete_ingredient_name_ingredients_path, :id_element => '#ingredient_id', class: "form-control" %>
+  </td>
+  <td class="col-md-1">
+    <%= fi.text_field :unit, required: true, class: "form-control" %>
+  </td>
+  <td class="col-md-1">
+    <%= fi.text_field :carb, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control " %>
+  </td>
+  <td class="col-md-1">
+    <%= fi.text_field :prot, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control " %>
+  </td>
+  <td class="col-md-1">
+    <%= fi.text_field :fat, required: true, :pattern => '^\d+(\.\d+)*$', title: "Apenas números separados por pontos", class: "form-control " %>
+  </td>
+<% end %>
